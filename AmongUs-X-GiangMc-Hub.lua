@@ -12607,6 +12607,49 @@ AutoSetInfo:Set(true)
 end
 end
 ------------------------------------------------------------------------
+local function addRainbowStrokeToObject(obj)
+    if obj:IsA("Frame") or obj:IsA("ImageLabel") then
+        if obj.Transparency < 1 then
+            local uiStroke = Instance.new("UIStroke")
+            uiStroke.Color = Color3.fromRGB(255, 255, 255)
+            uiStroke.Thickness = 3
+            uiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            uiStroke.Parent = obj
+
+            local uiGradient = Instance.new("UIGradient")
+            uiGradient.Color = ColorSequence.new({
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
+                ColorSequenceKeypoint.new(0.2, Color3.fromRGB(255, 127, 0)),
+                ColorSequenceKeypoint.new(0.4, Color3.fromRGB(255, 255, 0)),
+                ColorSequenceKeypoint.new(0.6, Color3.fromRGB(0, 255, 0)),
+                ColorSequenceKeypoint.new(0.8, Color3.fromRGB(0, 0, 255)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(75, 0, 130))
+            })
+            uiGradient.Rotation = 45
+            uiGradient.Parent = obj
+        end
+    end
+end
+
+local function addRainbowStrokeToCoreGui()
+    local coreGui = game:GetService("CoreGui")
+    local orion = coreGui:FindFirstChild("Orion")
+
+    if orion then
+        for _, child in pairs(orion:GetChildren()) do
+            if not child:IsA("ScreenGui") then
+                addRainbowStrokeToObject(child)
+
+                for _, grandchild in pairs(child:GetChildren()) do
+                    addRainbowStrokeToObject(grandchild)
+                end
+            end
+        end
+    end
+end
+
+addRainbowStrokeToCoreGui()
+------------------------------------------------------------------------
 gloveHits = {
     ["Default"] = game.ReplicatedStorage.b,
     ["Extended"] = game.ReplicatedStorage.b,
