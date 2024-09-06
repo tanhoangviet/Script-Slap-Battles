@@ -12616,15 +12616,16 @@ local function addRainbowStrokeToObject(obj)
             uiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
             uiStroke.Parent = obj
 
+            
             local uiGradient = Instance.new("UIGradient")
             uiGradient.Color = ColorSequence.new({
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
-                ColorSequenceKeypoint.new(0.2, Color3.fromRGB(255, 127, 0)),
-                ColorSequenceKeypoint.new(0.4, Color3.fromRGB(255, 255, 0)),
-                ColorSequenceKeypoint.new(0.6, Color3.fromRGB(0, 255, 0)),
-                ColorSequenceKeypoint.new(0.8, Color3.fromRGB(0, 0, 255)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(75, 0, 130))
-            })
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 105, 148)),   -- Xanh đậm của đại dương
+    ColorSequenceKeypoint.new(0.2, Color3.fromRGB(0, 168, 255)), -- Xanh nước biển
+    ColorSequenceKeypoint.new(0.4, Color3.fromRGB(64, 224, 208)),-- Xanh ngọc
+    ColorSequenceKeypoint.new(0.6, Color3.fromRGB(0, 255, 255)), -- Xanh lơ
+    ColorSequenceKeypoint.new(0.8, Color3.fromRGB(135, 206, 250)), -- Xanh nhạt
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(224, 255, 255))  -- Màu trắng xanh của nước trong
+})
             uiGradient.Rotation = 45
             uiGradient.Parent = obj
         end
